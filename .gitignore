@@ -1,0 +1,7 @@
+logs/
+.idea/
+venv/
+core/run/logs
+core/run/models
+core/scripts/logs
+core/scripts/models
