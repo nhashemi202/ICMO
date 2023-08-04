@@ -1,4 +1,9 @@
 # Instruction Conditioned MOdular network (ICMO)
+This repository contains the code for ICMO, a language-informed reinforcement learning agent trained on the BabyAI environment (Submitted to NeurIPS 2023)
+
+
+![ICMO figure](ICMO.svg)
+
 
 ## Installation
 Our code was tested with Python 3.7, 3.8, and 3.9. You can follow these instructions to set up the project. We recommend installing the dependencies via a Conda environment as below.
@@ -31,3 +36,8 @@ python3 ../scripts/train_rl.py --env BabyAI-PickupLoc-v0 \
 --input_mem_concat_instr \
 --use_hidden_feedback_contextual
 ```
+
+## Acknowledgements
+- Neural Production Systems ([Code](https://github.com/anirudh9119/neural_production_systems)/[Paper]([https://openreview.net/pdf?id=rJeXCo0cYX](https://arxiv.org/abs/2103.01937)))
+
+- BabyAI environment ([Code](https://github.com/mila-iqia/babyai)/[Paper](https://openreview.net/pdf?id=rJeXCo0cYX))
