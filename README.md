@@ -38,6 +38,6 @@ python3 ../scripts/train_rl.py --env BabyAI-PickupLoc-v0 \
 ```
 
 ## Acknowledgements
-- Neural Production Systems ([Code](https://github.com/anirudh9119/neural_production_systems)/[Paper]([https://openreview.net/pdf?id=rJeXCo0cYX](https://arxiv.org/abs/2103.01937)))
+- Neural Production Systems ([Code](https://github.com/anirudh9119/neural_production_systems)/[Paper](https://arxiv.org/abs/2103.01937)))
 
 - BabyAI environment ([Code](https://github.com/mila-iqia/babyai)/[Paper](https://openreview.net/pdf?id=rJeXCo0cYX))
