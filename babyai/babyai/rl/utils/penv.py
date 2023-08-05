@@ -1,6 +1,7 @@
 from multiprocessing import Process, Pipe
 import gym
 
+
 def worker(conn, env, use_compositional_split, compositional_test_splits):
     while True:
         cmd, data = conn.recv()
@@ -8,9 +9,12 @@ def worker(conn, env, use_compositional_split, compositional_test_splits):
             obs, reward, done, info = env.step(data)
             if done:
                 obs = env.reset()
+                if use_compositional_split:
+                    while any([j in obs['mission'] for j in compositional_test_splits]):
+                        obs = env.reset()
             conn.send((obs, reward, done, info))
         elif cmd == "reset":
-            obs = env.reset()       
+            obs = env.reset()  
             if use_compositional_split:
                 while any([j in obs['mission'] for j in compositional_test_splits]):
                     obs = env.reset()
@@ -58,7 +62,11 @@ class ParallelEnv(gym.Env):
     def reset(self):
         for local in self.locals:
             local.send(("reset", None))
-        results = [self.envs[0].reset()] + [local.recv() for local in self.locals]
+        obs = self.envs[0].reset()
+        if self.use_compositional_split:
+            while any([j in obs['mission'] for j in self.compositional_test_splits]):
+                obs = self.envs[0].reset()
+        results = [obs] + [local.recv() for local in self.locals]
         return results
 
     def step(self, actions):
@@ -67,6 +75,9 @@ class ParallelEnv(gym.Env):
         obs, reward, done, info = self.envs[0].step(actions[0])
         if done:
             obs = self.envs[0].reset()
+            if self.use_compositional_split:
+                while any([j in obs['mission'] for j in self.compositional_test_splits]):
+                    obs = self.envs[0].reset()
         results = zip(*[(obs, reward, done, info)] + [local.recv() for local in self.locals])
         return results
 
