@@ -2,7 +2,7 @@
 This repository contains the code for ICMO, a language-informed reinforcement learning agent trained on the BabyAI environment.
 
 
-![ICMO figure](ICMO.png)
+![ICMO figure](ICMO-v1.png)
 
 
 ## Installation
