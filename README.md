@@ -1,5 +1,5 @@
 # Instruction Conditioned MOdular network (ICMO)
-This repository contains the code for ICMO, a language-informed reinforcement learning agent trained on the BabyAI environment (Submitted to NeurIPS 2023)
+This repository contains the code for ICMO, a language-informed reinforcement learning agent trained on the BabyAI environment.
 
 
 ![ICMO figure](ICMO.png)
